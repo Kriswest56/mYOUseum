@@ -5,7 +5,10 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+
 import butterknife.ButterKnife;
+import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +23,15 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
 
         ButterKnife.bind(this);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //this checks dependencies
+        SystemRequirementsChecker.checkWithDefaultDialogs(this);
 
     }
 }
