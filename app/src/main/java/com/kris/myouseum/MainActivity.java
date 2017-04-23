@@ -1,7 +1,11 @@
 package com.kris.myouseum;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,5 +13,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment frag = new HomeScreenFragment();
+        ft.replace(R.id.fragment_frame, frag);
+        ft.commit();
+
+        ButterKnife.bind(this);
+
     }
 }

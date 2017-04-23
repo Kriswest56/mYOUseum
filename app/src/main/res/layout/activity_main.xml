@@ -6,14 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.kris.myouseum.MainActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/main_container">
+        android:id="@+id/fragment_frame">
 
-    </LinearLayout>
-
-
+    </FrameLayout>
 
 </FrameLayout>
