@@ -8,10 +8,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:layout_height="366dp"
         android:orientation="vertical"
         android:id="@+id/fragment_frame">
-
     </FrameLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/lv_found_devices"
+        android:layout_gravity="bottom"
+        android:layout_height="124dp">
+    </ListView>
 
 </FrameLayout>
