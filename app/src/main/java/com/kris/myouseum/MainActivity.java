@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             public void onNearablesDiscovered(List<Nearable> nearables) {
                 if(nearables.size() > 0){
                     Log.e(TAG, "Discovered Nearables: " + nearables.get(0).getUniqueKey());
+
+                    //TODO create list view on Home Screen fragment, populate nearables
+
                 }
             }
         });
@@ -67,9 +70,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //this checks dependencies
         SystemRequirementsChecker.checkWithDefaultDialogs(this);
-
     }
 
     @Override
