@@ -3,9 +3,6 @@ package com.kris.myouseum.utils;
 import android.app.Application;
 
 import com.estimote.coresdk.common.config.EstimoteSDK;
-import com.estimote.coresdk.observation.region.Region;
-import com.estimote.coresdk.service.BeaconManager;
-import java.util.UUID;
 
 /**
  * Created by gnyama200 on 4/23/2017.
