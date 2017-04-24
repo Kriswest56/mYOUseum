@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-
 import butterknife.ButterKnife;
 
 import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
@@ -14,9 +13,11 @@ import com.estimote.coresdk.recognition.packets.Nearable;
 import com.estimote.coresdk.service.BeaconManager;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
+
     private BeaconManager beaconManager;
     private  String TAG = MainActivity.class.getSimpleName();
 
@@ -32,16 +33,23 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        beaconManager = new BeaconManager(this);
+        startNearableDetection();
 
+    }
+
+    private void startNearableDetection(){
+
+        beaconManager = new BeaconManager(this);
+        beaconManager.setBackgroundScanPeriod(TimeUnit.SECONDS.toMillis(5), 0);
+        beaconManager.setForegroundScanPeriod(TimeUnit.SECONDS.toMillis(5), 0);
         beaconManager.setNearableListener(new BeaconManager.NearableListener() {
-                @Override
-                public void onNearablesDiscovered(List<Nearable> nearables) {
-                   Log.e(TAG, "Discovered Nearables: " + nearables);
+            @Override
+            public void onNearablesDiscovered(List<Nearable> nearables) {
+                if(nearables.size() > 0){
+                    Log.e(TAG, "Discovered Nearables: " + nearables.get(0).getUniqueKey());
                 }
             }
-
-        );
+        });
 
     }
 
@@ -75,4 +83,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         beaconManager.disconnect();
     }
+
 }
