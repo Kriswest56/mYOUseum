@@ -1,4 +1,4 @@
-package com.kris.myouseum;
+package com.kris.myouseum.dto;
 
 import io.realm.RealmObject;
 
@@ -10,6 +10,7 @@ public class Exhibit extends RealmObject {
 
     private String id;
     private String title;
+    private String details;
 
     public String getId() {
         return id;
@@ -26,4 +27,13 @@ public class Exhibit extends RealmObject {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
 }
