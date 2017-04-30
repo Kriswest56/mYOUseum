@@ -5,22 +5,23 @@
     android:orientation="vertical"
     tools:context="com.kris.myouseum.fragment.HomeScreenFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:text="Click on an artifact to learn more about it"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_red_light"
-        android:textSize="19sp" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:src="@mipmap/museum_icon1" />
+    
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:textAllCaps="true"
+        android:text="Click on an artifact to find more about it"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="19sp" />
 
     <ListView
         android:id="@+id/lv_found_devices"
