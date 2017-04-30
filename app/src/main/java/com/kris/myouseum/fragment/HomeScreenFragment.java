@@ -1,5 +1,6 @@
 package com.kris.myouseum.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -15,11 +16,16 @@ import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.estimote.coresdk.recognition.packets.Nearable;
 import com.estimote.coresdk.service.BeaconManager;
 import com.kris.myouseum.R;
+import com.kris.myouseum.dto.Exhibit;
+import com.kris.myouseum.service.ExhibitServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
+import io.realm.Realm;
 
 
 public class HomeScreenFragment extends Fragment {
@@ -27,9 +33,12 @@ public class HomeScreenFragment extends Fragment {
     private ListView lv_discoveredBeacons;
     private BeaconManager beaconManager;
     private String TAG = "HomeScreenFragment";
-    public HomeScreenFragment() {}
+    private ArrayList <Exhibit> allDevices;
+    private ExhibitServiceImpl exhibitService;
+    Realm myRealm;
 
-
+    public HomeScreenFragment() {
+    }
 
 
     @Override
@@ -37,6 +46,9 @@ public class HomeScreenFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home_screen, container, false);
 
+        exhibitService = ExhibitServiceImpl.getInstance();
+        allDevices = exhibitService.getAllExhibits(myRealm);
+        //System.out.println("what is here: "+ allDevices.get(0).toString());
 
         ButterKnife.bind(this, v);
 
@@ -47,6 +59,14 @@ public class HomeScreenFragment extends Fragment {
         return v;
     }
 
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        myRealm = Realm.getInstance(context);
+
+    }
     private void startNearableDetection(){
 
         beaconManager = new BeaconManager(getActivity());
@@ -58,12 +78,15 @@ public class HomeScreenFragment extends Fragment {
                 if(nearables.size() > 0){
                     discoveredBeaconsArrayAdapter.clear();
                     Log.e(TAG, "Discovered Nearables: " + nearables.get(0).getUniqueKey());
+
                     for(Nearable nearable: nearables){
                         //ToDo what information we want to display on the deviceList
-                        //discoveredBeaconsArrayAdapter.clear();
-                        Log.e(TAG, "Nearables: " +nearable.getUniqueKey()+ " unique name: " + nearable.getClass().getName());
-                        discoveredBeaconsArrayAdapter.add(nearable.getUniqueKey() + "\n" + nearable.getClass().getName());
-
+                        for(Exhibit exhibit: allDevices){
+                            String uniqueKey =nearable.getUniqueKey().substring(13,nearable.getUniqueKey().length());
+                            if (exhibit.getId().equals(uniqueKey)){
+                                discoveredBeaconsArrayAdapter.add(exhibit.getTitle());
+                            }
+                        }
                     }
                     lv_discoveredBeacons.setAdapter(discoveredBeaconsArrayAdapter);
                     lv_discoveredBeacons.setOnItemClickListener(adapterBeaconClickListener);

@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment frag = new ExhibitFragment();
+        Fragment frag = new HomeScreenFragment();
         ft.replace(R.id.fragment_frame, frag);
 
         ft.commit();
