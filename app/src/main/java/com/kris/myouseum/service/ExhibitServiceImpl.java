@@ -48,7 +48,26 @@ public class ExhibitServiceImpl implements ExhibitService {
 
     @Override
     public ArrayList<Exhibit> getAllExhibits(Realm realm) {
-        return null;
+
+        ArrayList<Exhibit> exhibitList = new ArrayList<Exhibit>();
+        RealmResults<Exhibit> results = realm.where(Exhibit.class).findAll();
+
+        if(results.size() > 0){
+            for(Exhibit e : results) {
+                exhibitList.add(e);
+                Log.d("ID: ", e.getId());
+            }
+        }else{
+            Log.d("Size 0: ", "Seeding data...");
+            populateExhibitData(realm);
+            results = realm.where(Exhibit.class).findAll();
+            for(Exhibit e : results) {
+                exhibitList.add(e);
+                Log.d("ID: ", e.getId());
+            }
+        }
+
+        return exhibitList;
     }
 
     @Override
