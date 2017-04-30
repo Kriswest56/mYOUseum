@@ -17,6 +17,7 @@ import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.estimote.coresdk.recognition.packets.Nearable;
 import com.estimote.coresdk.service.BeaconManager;
 import com.kris.myouseum.R;
+import com.kris.myouseum.fragment.ExhibitFragment;
 import com.kris.myouseum.fragment.HomeScreenFragment;
 
 import java.util.List;
@@ -57,6 +58,7 @@ public class MainActivity extends Activity {
             @Override
             public void onNearablesDiscovered(List<Nearable> nearables) {
                 if(nearables.size() > 0){
+                    discoveredBeaconsArrayAdapter.clear();
                     Log.e(TAG, "Discovered Nearables: " + nearables.get(0).getUniqueKey());
                     for(Nearable nearable: nearables){
                         //ToDo what information we want to display on the deviceList

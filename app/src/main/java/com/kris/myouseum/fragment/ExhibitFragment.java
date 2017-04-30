@@ -1,6 +1,7 @@
 package com.kris.myouseum.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,9 +16,15 @@ import io.realm.Realm;
 
 public class ExhibitFragment extends Fragment {
 
-    Realm myRealm = Realm.getInstance(getActivity());
+    Realm myRealm;
 
     public ExhibitFragment() {}
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        myRealm = Realm.getInstance(context);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
