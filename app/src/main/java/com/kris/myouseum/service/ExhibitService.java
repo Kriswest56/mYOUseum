@@ -2,6 +2,8 @@ package com.kris.myouseum.service;
 
 import com.kris.myouseum.dto.Exhibit;
 
+import java.util.ArrayList;
+
 import io.realm.Realm;
 
 /**
@@ -13,6 +15,8 @@ public interface ExhibitService {
     public void saveExhibit(Exhibit exhibit);
 
     public Exhibit getExhibit(String id);
+
+    public ArrayList<Exhibit> getAllExhibits();
 
     public void deleteExhibit(String id);
 

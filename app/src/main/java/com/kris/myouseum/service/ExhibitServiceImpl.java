@@ -47,6 +47,11 @@ public class ExhibitServiceImpl implements ExhibitService {
     }
 
     @Override
+    public ArrayList<Exhibit> getAllExhibits() {
+        return null;
+    }
+
+    @Override
     public void deleteExhibit(String id) {
 
     }
