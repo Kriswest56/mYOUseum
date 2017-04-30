@@ -20,6 +20,4 @@ public interface ExhibitService {
 
     public void deleteExhibit(String id);
 
-    public void seedData(Realm realm);
-
 }

@@ -75,7 +75,6 @@ public class ExhibitServiceImpl implements ExhibitService {
 
     }
 
-    @Override
     public void seedData(Realm realm){
 
         RealmResults<Exhibit> results = realm.where(Exhibit.class).findAll();
