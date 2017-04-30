@@ -7,18 +7,21 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.textservice.TextInfo;
+import android.widget.TextView;
 
 import com.kris.myouseum.R;
-import com.kris.myouseum.service.ExhibitServiceImpl;
+import com.kris.myouseum.dto.Exhibit;
+import com.kris.myouseum.utils.Constants;
+import com.kris.myouseum.utils.ExhibitInterface;
 
 import butterknife.ButterKnife;
-import io.realm.Realm;
 
 
 public class ExhibitFragment extends Fragment {
 
-    Realm myRealm;
-    ExhibitServiceImpl exhibitService = ExhibitServiceImpl.getInstance();
+    private Exhibit exhibit;
+    private ExhibitInterface mCallback;
 
     public ExhibitFragment() {}
 
@@ -26,7 +29,7 @@ public class ExhibitFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        myRealm = Realm.getInstance(context);
+        mCallback = (ExhibitInterface) context;
 
     }
 
@@ -36,9 +39,26 @@ public class ExhibitFragment extends Fragment {
 
         ButterKnife.bind(this, v);
 
-        exhibitService.seedData(myRealm);
+        Bundle bundle = this.getArguments();
+
+        if(bundle.get(Constants.EXHIBIT_OBJECT) != null){
+            exhibit = (Exhibit) bundle.get(Constants.EXHIBIT_OBJECT);
+            populateDetails(exhibit, v);
+        }
 
         return v;
+    }
+
+    public void populateDetails(Exhibit e, View v){
+
+        TextView textView = (TextView) v.findViewById(R.id.main_title);
+        textView.setText(e.getTitle());
+
+        TextView textView1 = (TextView) v.findViewById(R.id.main_description);
+        textView1.setText(e.getDetails());
+
+        System.out.println(e);
+
     }
 
 }

@@ -1,12 +1,14 @@
 package com.kris.myouseum.dto;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 
 /**
  * Created by Kris on 4/23/2017.
  */
 
-public class Exhibit extends RealmObject {
+public class Exhibit extends RealmObject implements Serializable {
 
     private String id;
     private String title;

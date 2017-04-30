@@ -18,6 +18,7 @@ import com.estimote.coresdk.service.BeaconManager;
 import com.kris.myouseum.R;
 import com.kris.myouseum.dto.Exhibit;
 import com.kris.myouseum.service.ExhibitServiceImpl;
+import com.kris.myouseum.utils.ExhibitInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class HomeScreenFragment extends Fragment {
     private String TAG = "HomeScreenFragment";
     private ArrayList <Exhibit> allDevices;
     private ExhibitServiceImpl exhibitService;
+    private ExhibitInterface mCallback;
     Realm myRealm;
 
     public HomeScreenFragment() {
@@ -65,6 +67,7 @@ public class HomeScreenFragment extends Fragment {
         super.onAttach(context);
 
         myRealm = Realm.getInstance(context);
+        mCallback = (ExhibitInterface) context;
 
     }
     private void startNearableDetection(){
@@ -110,6 +113,15 @@ public class HomeScreenFragment extends Fragment {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             String info = ((TextView) view).getText().toString();
             Log.e(TAG, "This was clicked: " + info);
+
+            Exhibit exhibit = null;
+            for(Exhibit e : allDevices){
+                if(info.equalsIgnoreCase(e.getTitle())){
+                    exhibit = e;
+                }
+            }
+
+            mCallback.handleDisplay(exhibit);
 
             //ToDo What happens when a beacon is selected
         }
