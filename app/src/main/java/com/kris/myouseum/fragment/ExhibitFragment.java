@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kris.myouseum.R;
@@ -56,6 +57,14 @@ public class ExhibitFragment extends Fragment {
 
         TextView textView1 = (TextView) v.findViewById(R.id.main_description);
         textView1.setText(e.getDetails());
+
+        ImageView imageView = (ImageView) v.findViewById(R.id.main_image);
+
+        //String uri = "@drawable/myresource";  // where myresource (without the extension) is the file
+
+        //int id = getResources().getIdentifier("res/drawable/" + e.getTitle().toLowerCase(), null, null);
+
+        imageView.setImageResource(R.drawable.dog);
 
         System.out.println(e);
 
