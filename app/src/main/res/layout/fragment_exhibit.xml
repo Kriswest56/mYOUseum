@@ -8,16 +8,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@android:color/holo_red_light"
-        android:layout_above="@+id/main_image"
-        android:layout_alignParentStart="true">
-
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -28,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="#e4e4e4"
+            android:background="#f4f4f4"
             android:orientation="vertical">
 
             <TextView
@@ -48,22 +38,12 @@
         </RelativeLayout>
     </ScrollView>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_above="@+id/scrollView2"
-        android:layout_alignParentStart="true"
-        android:background="@android:color/holo_red_light">
-
-    </RelativeLayout>
-
     <ImageView
         android:id="@+id/main_image"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         app:srcCompat="@android:color/darker_gray"
-        android:layout_above="@+id/relativeLayout"
+        android:layout_below="@+id/imageView2"
         android:layout_alignParentStart="true" />
 
     <ImageView
@@ -72,6 +52,7 @@
         android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark"
         app:srcCompat="@color/colorPrimaryDark" />
 
     <ImageView
@@ -80,6 +61,7 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/scrollView2"
+        android:background="@color/colorPrimaryDark"
         app:srcCompat="@color/colorPrimaryDark" />
 
     <Button
@@ -106,5 +88,15 @@
         android:textColor="@color/cardview_light_background"
         android:textSize="50sp"
         android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_above="@+id/main_image"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/holo_red_light">
+
+    </RelativeLayout>
 
 </RelativeLayout>
