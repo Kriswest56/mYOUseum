@@ -16,6 +16,7 @@ import com.kris.myouseum.utils.Constants;
 import com.kris.myouseum.utils.ExhibitInterface;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class ExhibitFragment extends Fragment {
@@ -58,6 +59,13 @@ public class ExhibitFragment extends Fragment {
         textView1.setText(e.getDetails());
 
         System.out.println(e);
+
+    }
+
+    @OnClick(R.id.back_button)
+    public void returnHome(){
+
+        mCallback.handleDisplay(null);
 
     }
 
