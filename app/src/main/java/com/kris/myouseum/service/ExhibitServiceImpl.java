@@ -47,7 +47,7 @@ public class ExhibitServiceImpl implements ExhibitService {
     }
 
     @Override
-    public ArrayList<Exhibit> getAllExhibits() {
+    public ArrayList<Exhibit> getAllExhibits(Realm realm) {
         return null;
     }
 

@@ -16,7 +16,7 @@ public interface ExhibitService {
 
     public Exhibit getExhibit(String id);
 
-    public ArrayList<Exhibit> getAllExhibits();
+    public ArrayList<Exhibit> getAllExhibits(Realm realm);
 
     public void deleteExhibit(String id);
 
