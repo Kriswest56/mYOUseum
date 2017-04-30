@@ -24,6 +24,7 @@ public class ExhibitFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         myRealm = Realm.getInstance(context);
+
     }
 
     @Override
