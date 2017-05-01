@@ -53,20 +53,48 @@ public class ExhibitFragment extends Fragment {
     public void populateDetails(Exhibit e, View v){
 
         TextView textView = (TextView) v.findViewById(R.id.main_title);
-        textView.setText(e.getTitle());
+        textView.setText(e.getArtifactName() + "(" + e.getTitle() + ")");
 
         TextView textView1 = (TextView) v.findViewById(R.id.main_description);
-        textView1.setText(e.getDetails());
+        textView1.setText( e.getDetails());
 
         ImageView imageView = (ImageView) v.findViewById(R.id.main_image);
 
-        //String uri = "@drawable/myresource";  // where myresource (without the extension) is the file
+        switch (e.getTitle()){
 
-        //int id = getResources().getIdentifier("res/drawable/" + e.getTitle().toLowerCase(), null, null);
+            case "Bed": imageView.setImageResource(R.drawable.montezuma);
+                break;
 
-        imageView.setImageResource(R.drawable.dog);
+            case "Fridge": imageView.setImageResource(R.drawable.devinci);
+                break;
 
-        System.out.println(e);
+            case "Bag": imageView.setImageResource(R.drawable.turing);
+                break;
+
+            case "Bike": imageView.setImageResource(R.drawable.martian_rover);
+                break;
+
+            case "Chair": imageView.setImageResource(R.drawable.shaka_zulu);
+                break;
+
+            case "Dog": imageView.setImageResource(R.drawable.darwin);
+                break;
+
+            case "Door": imageView.setImageResource(R.drawable.macintosh_128k);
+                break;
+
+            case "Generic": imageView.setImageResource(R.drawable.ada_lovelace_portrait);
+                break;
+
+            case "Shoe": imageView.setImageResource(R.drawable.nikola_tesla);
+                break;
+
+            case "Car": imageView.setImageResource(R.drawable.wright_bothers);
+                break;
+
+            default: imageView.setImageResource(R.drawable.dog);
+
+        }
 
     }
 

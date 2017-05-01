@@ -70,6 +70,7 @@ public class HomeScreenFragment extends Fragment {
         mCallback = (ExhibitInterface) context;
 
     }
+
     private void startNearableDetection(){
 
         beaconManager = new BeaconManager(getActivity());

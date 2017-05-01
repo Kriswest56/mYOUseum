@@ -3,6 +3,7 @@ package com.kris.myouseum.dto;
 import java.io.Serializable;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Kris on 4/23/2017.
@@ -10,9 +11,11 @@ import io.realm.RealmObject;
 
 public class Exhibit extends RealmObject implements Serializable {
 
+    @PrimaryKey
     private String id;
     private String title;
     private String details;
+    private String artifactName;
 
     public String getId() {
         return id;
@@ -38,4 +41,11 @@ public class Exhibit extends RealmObject implements Serializable {
         this.details = details;
     }
 
+    public String getArtifactName() {
+        return artifactName;
+    }
+
+    public void setArtifactName(String artifactName) {
+        this.artifactName = artifactName;
+    }
 }
