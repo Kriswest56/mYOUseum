@@ -11,7 +11,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:src="@mipmap/museum_icon1" />
-    
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
