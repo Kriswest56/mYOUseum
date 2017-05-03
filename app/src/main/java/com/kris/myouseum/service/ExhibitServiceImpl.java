@@ -49,6 +49,8 @@ public class ExhibitServiceImpl implements ExhibitService {
     @Override
     public ArrayList<Exhibit> getAllExhibits(Realm realm) {
 
+        deleteAllExhibits(realm);
+
         ArrayList<Exhibit> exhibitList = new ArrayList<Exhibit>();
         RealmResults<Exhibit> results = realm.where(Exhibit.class).findAll();
 
@@ -133,7 +135,7 @@ public class ExhibitServiceImpl implements ExhibitService {
         Exhibit exhibit6 = realm.createObject(Exhibit.class);
         exhibit6.setId("5d56806c5e72f807");
         exhibit6.setTitle("Door");
-        exhibit6.setTitle("Macintosh");
+        exhibit6.setArtifactName("Macintosh");
         exhibit6.setDetails("The Macintosh (branded as Mac since 1998) is a series of personal computers (PCs) designed, developed, and marketed by Apple Inc. Steve Jobs introduced the original Macintosh computer on January 24, 1984. This was the company's first mass-market personal computer featuring an integral graphical user interface and mouse.");
 
         Exhibit exhibit7 = realm.createObject(Exhibit.class);
@@ -152,7 +154,7 @@ public class ExhibitServiceImpl implements ExhibitService {
         exhibit9.setId("9b4b65520c974591");
         exhibit9.setTitle("Car");
         exhibit9.setArtifactName("Wright Brothers");
-        exhibit9.setDetails("The Wright brothers, Orville (August 19, 1871 – January 30, 1948) and Wilbur (April 16, 1867 – May 30, 1912), were two American brothers, inventors, and aviation pioneers who are generally credited[1][2][3] with inventing, building, and flying the world's first successful airplane. They made the first controlled, sustained flight of a powered, heavier-than-air aircraft on December 17, 1903, four miles south of Kitty Hawk, North Carolina. In 1904–05 the brothers developed their flying machine into the first practical fixed-wing aircraft. Although not the first to build and fly experimental aircraft, the Wright brothers were the first to invent aircraft controls that made fixed-wing powered flight possible.");
+        exhibit9.setDetails("The Wright brothers, Orville (August 19, 1871 – January 30, 1948) and Wilbur (April 16, 1867 – May 30, 1912), were two American brothers, inventors, and aviation pioneers who are generally credited with inventing, building, and flying the world's first successful airplane. They made the first controlled, sustained flight of a powered, heavier-than-air aircraft on December 17, 1903, four miles south of Kitty Hawk, North Carolina. In 1904–05 the brothers developed their flying machine into the first practical fixed-wing aircraft. Although not the first to build and fly experimental aircraft, the Wright brothers were the first to invent aircraft controls that made fixed-wing powered flight possible.");
 
         realm.commitTransaction();
 
