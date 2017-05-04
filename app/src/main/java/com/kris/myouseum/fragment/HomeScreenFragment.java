@@ -88,7 +88,7 @@ public class HomeScreenFragment extends Fragment {
                         for(Exhibit exhibit: allDevices){
                             String uniqueKey =nearable.getUniqueKey().substring(13,nearable.getUniqueKey().length());
                             if (exhibit.getId().equals(uniqueKey)){
-                                discoveredBeaconsArrayAdapter.add(exhibit.getTitle());
+                                discoveredBeaconsArrayAdapter.add(exhibit.getArtifactName());
                             }
                         }
                     }
@@ -117,7 +117,7 @@ public class HomeScreenFragment extends Fragment {
 
             Exhibit exhibit = null;
             for(Exhibit e : allDevices){
-                if(info.equalsIgnoreCase(e.getTitle())){
+                if(info.equalsIgnoreCase(e.getArtifactName())){
                     exhibit = e;
                 }
             }
